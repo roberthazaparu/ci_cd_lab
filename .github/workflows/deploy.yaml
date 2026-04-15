@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  compile:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -20,5 +20,11 @@ jobs:
       - name: Install dependencies
         run: go mod download
 
+      - name: Run tests
+        run: go test ./...
+
+  compile:
+    steps:
       - name: Compile binary
+        needs: test
         run: go build -o myapp
