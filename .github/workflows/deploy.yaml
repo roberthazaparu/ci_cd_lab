@@ -24,6 +24,7 @@ jobs:
         run: go test ./...
 
   compile:
+    runs-on: ubuntu-latest
     steps:
       - name: Compile binary
         needs: test
